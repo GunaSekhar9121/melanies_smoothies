@@ -13,10 +13,11 @@ st.write(
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_data_frame = session.table("SMOOTHIES.PUBLIC.FRUIT_OPTIONS").select(col('FRUIT_NAME')),col('SEARCH_ON'))
+my_data_frame = session.table("SMOOTHIES.PUBLIC.FRUIT_OPTIONS") \
+                      .select(col("FRUIT_NAME"), col("SEARCH_ON"))
 
-#st.dataframe(data = my_data_frame,use_container_width= True)
-#st.stop()
+st.dataframe(data = my_data_frame,use_container_width= True)
+st.stop()
 
 title = st.text_input('Name on Smoothiee')
 st.write('The name on Smoothiee will be',title)
